@@ -13,7 +13,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 /**
  * Controlador que gestiona las operaciones relacionadas con el juego de damas.
  */
-@CrossOrigin(origins = {"http://20.22.63.5", "http://20.22.63.5:8080", "http://checkers.eastus.cloudapp.azure.com"})
+@CrossOrigin(origins = {"http://20.22.63.5", "http://20.22.63.5:8080", "http://checkers.eastus.cloudapp.azure.com" , "http://checkersplay.azurewebsites.net/"})
 @RestController
 @RequestMapping("/api/juego")
 public class JuegoController {
