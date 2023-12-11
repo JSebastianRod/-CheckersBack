@@ -6,6 +6,7 @@ import edu.eci.arsw.checkers.service.JuegoService;
 import edu.eci.arsw.checkers.service.PlayerPowerThread;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -95,7 +96,11 @@ public class JuegoController {
      */
     @PostMapping("/registrar-usuario")
     public ResponseEntity<String> registrarUsuario(@RequestParam String nombre, @RequestParam String token) {
+        String caracteresEsp = "^[a-zA-Z0-9]+$";
         System.out.println(token);
+        if (!Pattern.matches(caracteresEsp, nombre) || !Pattern.matches(caracteresEsp, token)) {
+            return ResponseEntity.badRequest().body("Datos de entrada inválidos.");
+        }
         try {
             juegoService.registrarUsuario(nombre, token);
             return ResponseEntity.ok("Usuario registrado exitosamente.");
